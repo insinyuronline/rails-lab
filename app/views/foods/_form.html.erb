@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :restaurant_id %>
-    <%= form.text_field :restaurant_id %>
+    <%= form.collection_select :restaurant_id, Restaurant.order(:name), :id, :name %>
   </div>
 
   <div class="actions">
