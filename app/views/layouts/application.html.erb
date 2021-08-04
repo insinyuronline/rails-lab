@@ -10,6 +10,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="main">
+      <h1>​Food Delivery</h1>
+    </header>
+    <section class="content">
+      <nav class="side_nav">
+        <ul>
+          <li><a href="/"​>Home</a></li>
+          <li><a href="/restaurants">Restaurants</a></li>
+          <li><a href="/foods">Foods</a></li>
+        </ul>
+      </nav>
+      <main class="<%= controller.controller_name %>">
+        <%= yield %>
+      </main>
+    </section>
   </body>
 </html>
