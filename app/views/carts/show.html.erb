@@ -1,10 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<ul>
+<table>
   <% @cart.order_items.each do |order_item| %>
-    <li><%= order_item.quantity %> &times; <%= order_item.food.name %></li>
+    <tr>
+      <td class="quantity"><%= order_item.quantity %></td>
+      <td><%= order_item.food.name %></td>
+      <td class="price"><%= number_to_currency(order_item.total_price, unit: 'Rp ', delimiter: '.', precision: 0) %></td>
+    </tr>
   <% end %>
-</ul>
+  <tfoot>
+    <tr>
+      <th colspan="2">Total:</th>
+      <th class="price"><%= number_to_currency(@cart.total_price, unit: 'Rp ', delimiter: '.', precision: 0) %></th>
+    </tr>
+  </tfoot>
+</table>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
