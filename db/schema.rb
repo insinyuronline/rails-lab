@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_05_081221) do
+ActiveRecord::Schema.define(version: 2021_08_05_082812) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -28,12 +28,14 @@ ActiveRecord::Schema.define(version: 2021_08_05_081221) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer "food_id", null: false
-    t.integer "cart_id", null: false
+    t.integer "cart_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity", default: 1
+    t.integer "order_id"
     t.index ["cart_id"], name: "index_order_items_on_cart_id"
     t.index ["food_id"], name: "index_order_items_on_food_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -52,4 +54,5 @@ ActiveRecord::Schema.define(version: 2021_08_05_081221) do
   add_foreign_key "foods", "restaurants"
   add_foreign_key "order_items", "carts"
   add_foreign_key "order_items", "foods"
+  add_foreign_key "order_items", "orders"
 end

@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+  include CurrentCart
+  before_action :set_cart, only: [:new, :create]
+  before_action :ensure_cart_not_empty, only: :new
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
@@ -22,9 +25,13 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
+    @order.add_order_items_from_cart(@cart)
 
     respond_to do |format|
       if @order.save
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+        
         format.html { redirect_to @order, notice: "Order was successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
@@ -65,5 +72,9 @@ class OrdersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def order_params
       params.require(:order).permit(:name, :email)
+    end
+
+    def ensure_cart_not_empty
+      redirect_to root_path, notice: 'Your cart is empty' if @cart.order_items.empty?
     end
 end
