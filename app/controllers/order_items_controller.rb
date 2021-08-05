@@ -29,6 +29,7 @@ class OrderItemsController < ApplicationController
     respond_to do |format|
       if @order_item.save
         format.html { redirect_to root_path }
+        format.js
         format.json { render :show, status: :created, location: @order_item }
       else
         format.html { render :new, status: :unprocessable_entity }
