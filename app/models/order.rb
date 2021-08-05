@@ -9,4 +9,8 @@ class Order < ApplicationRecord
       order_items << order_item
     end
   end
+
+  def total_price
+    order_items.to_a.sum { |order_item| order_item.total_price }
+  end
 end

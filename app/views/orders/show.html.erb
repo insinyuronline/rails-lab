@@ -10,5 +10,12 @@
   <%= @order.email %>
 </p>
 
+<p>
+  <strong>Order Item:</strong>
+  <table>
+    <%= render(@order.order_items) %>
+  </table>
+</p>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
