@@ -1,4 +1,6 @@
 class RestaurantsController < ApplicationController
+  include CurrentCart
+  before_action :set_cart
   before_action :set_restaurant, only: %i[ show edit update destroy ]
 
   # GET /restaurants or /restaurants.json
