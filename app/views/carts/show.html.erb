@@ -1,13 +1,1 @@
-<p id="notice"><%= notice %></p>
-
-<table>
-  <%= render(@cart.order_items) %>
-  <tfoot>
-    <tr>
-      <th colspan="2">Total:</th>
-      <th class="price"><%= number_to_currency(@cart.total_price, unit: 'Rp ', delimiter: '.', precision: 0) %></th>
-    </tr>
-  </tfoot>
-</table>
-
-<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= render @cart %>
