@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :orders
   root to: 'foods#index'
   resources :order_items
   resources :carts
