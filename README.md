@@ -1,24 +1,18 @@
-# README
+# Rails Lab - Food Ordering Web App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple Rails app to be used for trainings material.
 
-Things you may want to cover:
+# Prerequisites
 
-* Ruby version
+To be able to run this, you need:
+- Ruby version 2.7.0 or higher
+- Rails version 6.0.4 or higher
+- PostgreSQL
 
-* System dependencies
+# Run Instructions
 
-* Configuration
+To run this app in development environment, execute the following command:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+bundle exec rails s -b=0.0.0.0 -p 3000
+```
