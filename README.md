@@ -1,6 +1,6 @@
 # Rails Lab - Food Ordering Web App
 
-This is a simple Rails app to be used for trainings material.
+This is a simple Rails app to be used for trainings purpose.
 
 # Prerequisites
 
